@@ -1,7 +1,6 @@
 import { useState, useEffect } from "react";
 import { Link } from "react-router";
 import { Navbar } from "../components/Navbar";
-import { AdminNavbar } from "../components/AdminNavbar";
 import { useAuth } from "../components/authContext";
 import apiService from "../components/apiService";
 
@@ -36,7 +35,7 @@ export const MyProfile = () => {
   if (loading) {
     return (
       <div className="min-h-screen bg-gray-50">
-        {user?.isAdmin ? <AdminNavbar /> : <Navbar />}
+        <Navbar />
         <div className="flex items-center justify-center py-20">
           <div className="text-lg text-gray-600">Carregando seu perfil...</div>
         </div>
@@ -47,7 +46,7 @@ export const MyProfile = () => {
   if (error) {
     return (
       <div className="min-h-screen bg-gray-50">
-        {user?.isAdmin ? <AdminNavbar /> : <Navbar />}
+        <Navbar />
         <div className="max-w-7xl mx-auto py-6 px-4 sm:px-6 lg:px-8">
           <div className="bg-red-100 border border-red-400 text-red-700 px-4 py-3 rounded">
             {error}
@@ -79,19 +78,19 @@ export const MyProfile = () => {
 
   return (
     <div className="min-h-screen bg-gray-50">
-      {user?.isAdmin ? <AdminNavbar /> : <Navbar />}
+      <Navbar />
 
       <main className="max-w-4xl mx-auto py-6 px-4 sm:px-6 lg:px-8">
         <div className="mb-8">
           <div className="flex items-center justify-between">
             <div>
-              <h1 className="text-5xl font-bold bg-gradient-to-r from-yellow-600 to-amber-600 bg-clip-text text-transparent mb-2">
+              <h1 className="text-4xl md:text-5xl font-bold bg-gradient-to-r from-yellow-600 to-amber-600 bg-clip-text text-transparent mb-2">
                 MEU PERFIL
               </h1>
             </div>
             <Link
               to="/home"
-              className="bg-gradient-to-r from-gray-600 to-slate-500 hover:brightness-130 active:brightness-95 text-white border border-stone-600 font-medium py-2 px-4 rounded-lg transition-colors duration-200"
+              className="text-lg bg-gradient-to-r from-gray-600 to-slate-500 hover:brightness-130 active:brightness-95 text-white border border-stone-600 font-normal md:font-medium py-1 md:py-2 px-2 md:px-4 rounded-lg transition-colors duration-200"
             >
               ← Voltar
             </Link>

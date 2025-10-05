@@ -1,6 +1,6 @@
 import { useState, useEffect } from "react";
 import { Link } from "react-router";
-import { AdminNavbar } from "../components/AdminNavbar";
+import { Navbar } from "../components/Navbar";
 import apiService from "../components/apiService";
 
 export const Clients = () => {
@@ -45,7 +45,7 @@ export const Clients = () => {
   if (loading) {
     return (
       <div className="min-h-screen bg-gray-50">
-        <AdminNavbar />
+        <Navbar />
         <div className="flex items-center justify-center py-20">
           <div className="text-lg text-gray-600">Carregando clientes...</div>
         </div>
@@ -55,12 +55,11 @@ export const Clients = () => {
 
   return (
     <div className="min-h-screen bg-gradient-to-b from-white to-stone-200">
-      <AdminNavbar />
+      <Navbar />
 
       <main className="max-w-6xl mx-auto py-6 px-4 sm:px-6 lg:px-8">
-        {/* Header */}
         <div className="mb-8">
-          <h1 className="text-5xl font-bold bg-gradient-to-r from-yellow-600 to-amber-600 bg-clip-text text-transparent mb-2">
+          <h1 className="text-4xl md:text-5xl font-bold bg-gradient-to-r from-yellow-600 to-amber-600 bg-clip-text text-transparent mb-2">
             CLIENTES
           </h1>
         </div>
@@ -76,13 +75,13 @@ export const Clients = () => {
             <table className="min-w-full divide-y divide-gray-200">
               <thead className="bg-gradient-to-r from-stone-800 to-amber-950">
                 <tr>
-                  <th className="px-6 py-4 text-left text-lg font-medium text-yellow-400 uppercase tracking-wider">
+                  <th className="px-3 py-4 md:px-6 md:py-4 text-left text-lg font-medium text-yellow-400 uppercase tracking-wider">
                     Nome
                   </th>
-                  <th className="px-6 py-4 text-left text-lg font-medium text-yellow-400 uppercase tracking-wider">
+                  <th className="px-3 py-4 md:px-6 md:py-4 text-left text-lg font-medium text-yellow-400 uppercase tracking-wider">
                     Email
                   </th>
-                  <th className="px-6 py-4 text-center text-lg font-medium text-yellow-400 uppercase tracking-wider">
+                  <th className="px-3 py-4 md:px-6 md:py-4 text-center text-lg font-medium text-yellow-400 uppercase tracking-wider">
                     Ações
                   </th>
                 </tr>
@@ -93,7 +92,7 @@ export const Clients = () => {
                     key={client.id}
                     className="hover:bg-gray-50 transition-colors duration-200"
                   >
-                    <td className="px-6 py-4 whitespace-nowrap">
+                    <td className="px-2 py-4 md:px-6 md:py-4 whitespace-nowrap">
                       <div className="flex items-center">
                         <div>
                           <div className="text-base font-medium text-gray-900">
@@ -107,10 +106,10 @@ export const Clients = () => {
                         </div>
                       </div>
                     </td>
-                    <td className="px-6 py-4 whitespace-nowrap text-base text-gray-500">
+                    <td className="px-2 py-4 md:px-6 md:py-4 whitespace-nowrap text-base text-gray-500">
                       {client.email}
                     </td>
-                    <td className="px-6 py-4 whitespace-nowrap text-center">
+                    <td className="px-2 py-4 md:px-6 md:py-4 whitespace-nowrap text-center">
                       <div className="flex items-center justify-center space-x-3">
                         <Link
                           to={`/admin/clients/${client.id}/details`}

@@ -1,6 +1,6 @@
 import { useState, useEffect } from "react";
 import { useParams, useNavigate, Link } from "react-router";
-import { AdminNavbar } from "../components/AdminNavbar";
+import { Navbar } from "../components/Navbar";
 import apiService from "../components/apiService";
 
 export const ProductEdit = () => {
@@ -145,7 +145,7 @@ export const ProductEdit = () => {
   if (loading) {
     return (
       <div className="min-h-screen bg-gray-50">
-        <AdminNavbar />
+        <Navbar />
         <div className="flex items-center justify-center py-20">
           <div className="text-lg text-gray-600">
             Carregando dados do produto...
@@ -157,19 +157,19 @@ export const ProductEdit = () => {
 
   return (
     <div className="min-h-screen bg-gray-50">
-      <AdminNavbar />
+      <Navbar />
 
       <main className="max-w-4xl mx-auto py-6 px-4 sm:px-6 lg:px-8">
         <div className="mb-8">
           <div className="flex items-center justify-between">
             <div>
-              <h1 className="text-5xl font-bold bg-gradient-to-r from-yellow-600 to-amber-600 bg-clip-text text-transparent mb-2">
-                EDITAR PRODUTO
+              <h1 className="text-3xl md:text-5xl font-bold bg-gradient-to-r from-yellow-600 to-amber-600 bg-clip-text text-transparent mb-2">
+                EDITAR
               </h1>
             </div>
             <Link
               to="/admin/products"
-              className="bg-gradient-to-r from-gray-600 to-slate-500 hover:brightness-130 active:brightness-95 text-white border border-stone-600 font-medium py-2 px-4 rounded-lg transition-colors duration-200"
+              className="text-lg bg-gradient-to-r from-gray-600 to-slate-500 hover:brightness-130 active:brightness-95 text-white border border-stone-600 font-normal md:font-medium py-1 md:py-2 px-2 md:px-4 rounded-lg transition-colors duration-200"
             >
               ← Voltar
             </Link>
@@ -438,7 +438,7 @@ export const ProductEdit = () => {
                       Salvando...
                     </>
                   ) : (
-                    "Salvar Alterações"
+                    "Salvar"
                   )}
                 </button>
               </div>

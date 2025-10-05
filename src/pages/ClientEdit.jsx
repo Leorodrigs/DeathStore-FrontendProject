@@ -1,6 +1,6 @@
 import { useState, useEffect } from "react";
 import { useParams, useNavigate, Link } from "react-router";
-import { AdminNavbar } from "../components/AdminNavbar";
+import { Navbar } from "../components/Navbar";
 import apiService from "../components/apiService";
 
 export const ClientEdit = () => {
@@ -103,7 +103,7 @@ export const ClientEdit = () => {
   if (loading) {
     return (
       <div className="min-h-screen bg-gray-50">
-        <AdminNavbar />
+        <Navbar />
         <div className="flex items-center justify-center py-20">
           <div className="text-lg text-gray-600">
             Carregando dados do cliente...
@@ -115,19 +115,19 @@ export const ClientEdit = () => {
 
   return (
     <div className="min-h-screen bg-gray-50">
-      <AdminNavbar />
+      <Navbar />
 
       <main className="max-w-4xl mx-auto py-6 px-4 sm:px-6 lg:px-8">
         <div className="mb-8">
           <div className="flex items-center justify-between">
             <div>
-              <h1 className="text-5xl font-bold bg-gradient-to-r from-yellow-600 to-amber-600 bg-clip-text text-transparent">
-                EDITAR CLIENTE
+              <h1 className="text-3xl md:text-5xl font-bold bg-gradient-to-r from-yellow-600 to-amber-600 bg-clip-text text-transparent">
+                EDITAR
               </h1>
             </div>
             <Link
               to="/admin/clients"
-              className="bg-gradient-to-r from-gray-600 to-slate-500 hover:brightness-130 active:brightness-95 text-white border border-stone-600 font-medium py-2 px-4 rounded-lg transition-colors duration-200"
+              className="text-lg bg-gradient-to-r from-gray-600 to-slate-500 hover:brightness-130 active:brightness-95 text-white border border-stone-600 font-normal md:font-medium py-1 md:py-2 px-2 md:px-4 rounded-lg transition-colors duration-200"
             >
               ← Voltar
             </Link>
@@ -248,15 +248,15 @@ export const ClientEdit = () => {
             <div className="px-6 py-4 bg-gray-50 border-t border-gray-200 flex justify-between">
               <Link
                 to={`/admin/clients/${id}/details`}
-                className="bg-gradient-to-r from-gray-600 to-slate-500 hover:brightness-130 active:brightness-95 text-white border border-stone-600 font-medium py-2 px-4 rounded-lg transition-colors duration-200"
+                className="bg-gradient-to-r from-gray-600 to-slate-500 hover:brightness-130 active:brightness-95 text-white border border-stone-600 font-normal md:font-medium py-1 md:py-2 px-2 md:px-4 rounded-lg transition-colors duration-200"
               >
-                Ver Detalhes
+                Detalhes
               </Link>
 
-              <div className="flex space-x-3">
+              <div className="flex ml-4 space-x-1 md:space-x-3">
                 <Link
                   to="/admin/clients"
-                  className="bg-gradient-to-r from-gray-300 to-slate-400 hover:brightness-130 active:brightness-95 text-stone-700 border border-stone-600 font-medium py-2 px-4 rounded-lg transition-colors duration-200"
+                  className="bg-gradient-to-r from-gray-300 to-slate-400 hover:brightness-130 active:brightness-95 text-stone-700 border border-stone-600 font-normal md:font-medium py-1 md:py-2 px-2 md:px-4 rounded-lg transition-colors duration-200"
                 >
                   Cancelar
                 </Link>
@@ -264,7 +264,7 @@ export const ClientEdit = () => {
                 <button
                   type="submit"
                   disabled={saving}
-                  className="bg-gradient-to-r from-yellow-500 to-amber-600 cursor-pointer hover:brightness-130 active:brightness-95 text-white border border-amber-600 font-medium py-2 px-4 rounded-lg transition-colors duration-200"
+                  className="bg-gradient-to-r from-yellow-500 to-amber-600 cursor-pointer hover:brightness-130 active:brightness-95 text-white border border-amber-600 font-normal md:font-medium py-1 md:py-2 px-2 md:px-4 rounded-lg transition-colors duration-200"
                 >
                   {saving ? (
                     <>
@@ -290,7 +290,7 @@ export const ClientEdit = () => {
                       Salvando...
                     </>
                   ) : (
-                    "Salvar Alterações"
+                    "Salvar"
                   )}
                 </button>
               </div>

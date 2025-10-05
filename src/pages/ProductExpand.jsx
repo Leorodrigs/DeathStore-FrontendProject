@@ -1,7 +1,7 @@
 import { useState, useEffect } from "react";
 import { useParams, useLocation, useNavigate } from "react-router";
 import { Navbar } from "../components/Navbar";
-import { AdminNavbar } from "../components/AdminNavbar";
+
 import { useAuth } from "../components/authContext";
 import apiService from "../components/apiService";
 
@@ -64,7 +64,7 @@ export const ProductExpanded = () => {
   if (loading) {
     return (
       <div className="min-h-screen bg-gray-50">
-        {user?.isAdmin ? <AdminNavbar /> : <Navbar />}
+        <Navbar />
         <div className="flex items-center justify-center py-20">
           <div className="text-lg text-gray-600">Carregando produto...</div>
         </div>
@@ -75,7 +75,7 @@ export const ProductExpanded = () => {
   if (error || !product) {
     return (
       <div className="min-h-screen bg-gray-50">
-        {user?.isAdmin ? <AdminNavbar /> : <Navbar />}
+        <Navbar />
         <div className="max-w-4xl mx-auto py-8 px-4">
           <div className="bg-red-100 border border-red-400 text-red-700 px-4 py-3 rounded">
             {error || "Produto não encontrado"}
@@ -96,7 +96,7 @@ export const ProductExpanded = () => {
 
   return (
     <div className="min-h-screen bg-gray-50">
-      {user?.isAdmin ? <AdminNavbar /> : <Navbar />}
+      <Navbar />
 
       <main className="max-w-6xl mx-auto py-8 px-4 sm:px-6 lg:px-8">
         <button

@@ -1,7 +1,7 @@
 import { useState, useEffect } from "react";
 import { useSearchParams, useNavigate } from "react-router";
 import { Navbar } from "../components/Navbar";
-import { AdminNavbar } from "../components/AdminNavbar";
+
 import { useAuth } from "../components/authContext";
 import apiService from "../components/apiService";
 
@@ -149,7 +149,7 @@ export const Home = () => {
   if (loading) {
     return (
       <div className="min-h-screen bg-gray-50">
-        {user?.isAdmin ? <AdminNavbar /> : <Navbar />}
+        <Navbar />
         <div className="flex items-center justify-center py-20">
           <div className="text-lg text-gray-600">Carregando produtos...</div>
         </div>
@@ -159,7 +159,7 @@ export const Home = () => {
 
   return (
     <div className="min-h-screen bg-gray-50">
-      {user?.isAdmin ? <AdminNavbar /> : <Navbar />}
+      <Navbar />
 
       <main className="max-w-7xl mx-auto py-6 px-4 sm:px-6 lg:px-8">
         {error && (

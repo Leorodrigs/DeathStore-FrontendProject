@@ -58,18 +58,10 @@ export const Signup = () => {
   };
 
   return (
-    <div className="min-h-screen flex items-center justify-center bg-gradient-to-b from-white to-stone-900">
-      <div className="w-3/5 relative">
-        <img
-          src="/Logo.png"
-          alt="Logo"
-          className="w-150 h-150 ml-30 object-cover"
-        />
-      </div>
-
-      <div className="w-2/5 flex items-center justify-center px-4 p-6">
+    <div className="min-h-screen flex flex-col md:flex-row items-center justify-center bg-gradient-to-b from-white to-stone-900 p-4">
+      <div className="w-full md:w-2/5 flex items-center justify-center px-4 py-6 md:order-2">
         <div className="w-full max-w-md">
-          <h1 className="text-6xl text-center mb-8 font-bold text-yellow-400 [text-shadow:_-3px_-3px_0_#000,_3px_-3px_0_#000,_-3px_3px_0_#000,_3px_3px_0_#000,_-3px_0px_0_#000,_3px_0px_0_#000,_0px_-3px_0_#000,_0px_3px_0_#000,_0px_4px_6px_rgba(0,0,0,0.5)] leading-tight">
+          <h1 className="text-4xl md:text-6xl text-center mb-6 md:mb-8 font-bold text-yellow-400 [text-shadow:_-2px_-2px_0_#000,_2px_-2px_0_#000,_-2px_2px_0_#000,_2px_2px_0_#000,_-2px_0px_0_#000,_2px_0px_0_#000,_0px_-2px_0_#000,_0px_2px_0_#000,_0px_3px_5px_rgba(0,0,0,0.5)] md:[text-shadow:_-3px_-3px_0_#000,_3px_-3px_0_#000,_-3px_3px_0_#000,_3px_3px_0_#000,_-3px_0px_0_#000,_3px_0px_0_#000,_0px_-3px_0_#000,_0px_3px_0_#000,_0px_4px_6px_rgba(0,0,0,0.5)] leading-tight">
             Cadastro
           </h1>
 
@@ -80,7 +72,7 @@ export const Signup = () => {
           )}
 
           <form
-            className="flex flex-col space-y-6 w-full"
+            className="flex flex-col space-y-4 md:space-y-6 w-full"
             onSubmit={handleSubmit}
           >
             <div className="relative w-full">
@@ -140,14 +132,14 @@ export const Signup = () => {
               <button
                 type="submit"
                 disabled={loading}
-                className="w-1/2 bg-gradient-to-br from-yellow-200 to-amber-400 font-semibold text-stone-900 px-4 py-2 rounded shadow-md border border-yellow-800 transition-all duration-300 cursor-pointer hover:shadow-lg hover:brightness-190 active:brightness-95 disabled:opacity-50 disabled:cursor-not-allowed"
+                className="w-full md:w-1/2 bg-gradient-to-br from-yellow-200 to-amber-400 font-semibold text-stone-900 px-4 py-2 rounded shadow-md border border-yellow-800 transition-all duration-300 cursor-pointer hover:shadow-lg hover:brightness-110 active:brightness-95 disabled:opacity-50 disabled:cursor-not-allowed"
               >
                 {loading ? "Criando..." : "Criar Conta"}
               </button>
             </div>
           </form>
 
-          <div className="text-center mt-6">
+          <div className="text-center mt-4 md:mt-6">
             <p className="text-stone-200 text-sm">
               Já tem conta?{" "}
               <Link
@@ -159,6 +151,14 @@ export const Signup = () => {
             </p>
           </div>
         </div>
+      </div>
+
+      <div className="w-full md:w-3/5 flex justify-center md:justify-start px-4 md:order-1">
+        <img
+          src="/Logo.png"
+          alt="Logo"
+          className="w-64 h-64 md:w-full md:h-auto md:max-w-lg lg:max-w-2xl object-contain"
+        />
       </div>
     </div>
   );

@@ -1,6 +1,6 @@
 import { useState, useEffect } from "react";
 import { Link } from "react-router";
-import { AdminNavbar } from "../components/AdminNavbar";
+import { Navbar } from "../components/Navbar";
 import apiService from "../components/apiService";
 
 export const Products = () => {
@@ -60,7 +60,7 @@ export const Products = () => {
   if (loading) {
     return (
       <div className="min-h-screen bg-gray-50">
-        <AdminNavbar />
+        <Navbar />
         <div className="flex items-center justify-center py-20">
           <div className="text-lg text-gray-600">Carregando produtos...</div>
         </div>
@@ -70,20 +70,20 @@ export const Products = () => {
 
   return (
     <div className="min-h-screen bg-gray-50">
-      <AdminNavbar />
+      <Navbar />
 
       <main className="max-w-7xl mx-auto py-6 px-4 sm:px-6 lg:px-8">
         <div className="mb-8">
           <div className="flex items-center justify-between">
             <div>
-              <h1 className="text-5xl font-bold bg-gradient-to-r from-yellow-600 to-amber-600 bg-clip-text text-transparent mb-2">
+              <h1 className="text-4xl md:text-5xl font-bold bg-gradient-to-r from-yellow-600 to-amber-600 bg-clip-text text-transparent mb-2">
                 PRODUTOS
               </h1>
             </div>
 
             <Link
               to="/admin/products/create"
-              className="bg-gradient-to-r from-green-500 to-emerald-600 hover:brightness-110 active:brightness-95 text-white font-bold py-3 px-6 rounded-lg shadow-lg transition-all duration-200 flex items-center"
+              className="bg-gradient-to-r from-green-500 to-emerald-600 hover:brightness-110 active:brightness-95 text-white font-bold py-3 px-3 md:px-6 rounded-lg shadow-lg transition-all duration-200 flex items-center"
             >
               <svg
                 className="w-5 h-5 mr-2"
@@ -98,7 +98,7 @@ export const Products = () => {
                   d="M12 4v16m8-8H4"
                 />
               </svg>
-              Adicionar Produto
+              Novo
             </Link>
           </div>
         </div>
@@ -114,19 +114,19 @@ export const Products = () => {
             <table className="min-w-full divide-y divide-gray-200">
               <thead className="bg-gradient-to-r from-stone-800 to-amber-950">
                 <tr>
-                  <th className="px-6 py-4 text-left text-lg font-medium text-yellow-400 uppercase tracking-wider">
+                  <th className="px-3 py-4 md:px-6 md:py-4 text-left text-lg font-medium text-yellow-400 uppercase tracking-wider">
                     Produto
                   </th>
-                  <th className="px-6 py-4 text-left text-lg font-medium text-yellow-400 uppercase tracking-wider">
+                  <th className="px-3 py-4 md:px-6 md:py-4 text-left text-lg font-medium text-yellow-400 uppercase tracking-wider">
                     Categoria
                   </th>
-                  <th className="px-6 py-4 text-left text-lg font-medium text-yellow-400 uppercase tracking-wider">
+                  <th className="px-3 py-4 md:px-6 md:py-4 text-left text-lg font-medium text-yellow-400 uppercase tracking-wider">
                     Preço
                   </th>
-                  <th className="px-6 py-4 text-left text-lg font-medium text-yellow-400 uppercase tracking-wider">
+                  <th className="px-3 py-4 md:px-6 md:py-4 text-left text-lg font-medium text-yellow-400 uppercase tracking-wider">
                     Estoque
                   </th>
-                  <th className="px-6 py-4 text-center text-lg font-medium text-yellow-400 uppercase tracking-wider">
+                  <th className="px-3 py-4 md:px-6 md:py-4 text-center text-lg font-medium text-yellow-400 uppercase tracking-wider">
                     Ações
                   </th>
                 </tr>
