@@ -1,0 +1,165 @@
+import { useState } from "react";
+import { Link, useNavigate } from "react-router";
+import apiService from "../components/apiService";
+
+export const Signup = () => {
+  const [formData, setFormData] = useState({
+    name: "",
+    email: "",
+    password: "",
+    confirmPassword: "",
+  });
+  const [loading, setLoading] = useState(false);
+  const [error, setError] = useState("");
+  const navigate = useNavigate();
+
+  const handleChange = (e) => {
+    setFormData({
+      ...formData,
+      [e.target.name]: e.target.value,
+    });
+  };
+
+  const handleSubmit = async (e) => {
+    e.preventDefault();
+    setLoading(true);
+    setError("");
+
+    if (formData.password !== formData.confirmPassword) {
+      setError("As senhas não coincidem");
+      setLoading(false);
+      return;
+    }
+
+    if (formData.password.length < 6) {
+      setError("A senha deve ter pelo menos 6 caracteres");
+      setLoading(false);
+      return;
+    }
+
+    try {
+      const signupData = {
+        name: formData.name,
+        email: formData.email,
+        password: formData.password,
+      };
+
+      await apiService.signup(signupData);
+      alert("Conta criada com sucesso! Você pode fazer login agora.");
+      navigate("/login");
+    } catch (error) {
+      console.error("Erro no cadastro:", error);
+      setError(
+        error.response?.data?.message || "Erro ao criar conta. Tente novamente."
+      );
+    } finally {
+      setLoading(false);
+    }
+  };
+
+  return (
+    <div className="min-h-screen flex items-center justify-center bg-gradient-to-b from-white to-stone-900">
+      <div className="w-3/5 relative">
+        <img
+          src="/Logo.png"
+          alt="Logo"
+          className="w-150 h-150 ml-30 object-cover"
+        />
+      </div>
+
+      <div className="w-2/5 flex items-center justify-center px-4 p-6">
+        <div className="w-full max-w-md">
+          <h1 className="text-6xl text-center mb-8 font-bold text-yellow-400 [text-shadow:_-3px_-3px_0_#000,_3px_-3px_0_#000,_-3px_3px_0_#000,_3px_3px_0_#000,_-3px_0px_0_#000,_3px_0px_0_#000,_0px_-3px_0_#000,_0px_3px_0_#000,_0px_4px_6px_rgba(0,0,0,0.5)] leading-tight">
+            Cadastro
+          </h1>
+
+          {error && (
+            <div className="text-red-600 text-sm text-center mb-4 bg-red-100 border border-red-400 rounded px-4 py-2">
+              {error}
+            </div>
+          )}
+
+          <form
+            className="flex flex-col space-y-6 w-full"
+            onSubmit={handleSubmit}
+          >
+            <div className="relative w-full">
+              <input
+                type="text"
+                id="name"
+                name="name"
+                className="w-full bg-yellow-200 border border-yellow-800 rounded px-4 py-3 text-black transition focus:outline-none focus:border-amber-500 focus:bg-amber-400"
+                placeholder="Nome completo"
+                value={formData.name}
+                onChange={handleChange}
+                required
+              />
+            </div>
+
+            <div className="relative w-full">
+              <input
+                type="email"
+                id="email"
+                name="email"
+                className="w-full bg-yellow-200 border border-yellow-800 rounded px-4 py-3 text-black transition focus:outline-none focus:border-amber-500 focus:bg-amber-400"
+                placeholder="Email"
+                value={formData.email}
+                onChange={handleChange}
+                required
+              />
+            </div>
+
+            <div className="relative w-full">
+              <input
+                type="password"
+                id="password"
+                name="password"
+                className="w-full bg-yellow-200 border border-yellow-800 rounded px-4 py-3 text-black transition focus:outline-none focus:border-amber-500 focus:bg-amber-400"
+                placeholder="Senha (mínimo 6 caracteres)"
+                value={formData.password}
+                onChange={handleChange}
+                required
+                minLength={6}
+              />
+            </div>
+
+            <div className="relative w-full">
+              <input
+                type="password"
+                id="confirmPassword"
+                name="confirmPassword"
+                className="w-full bg-yellow-200 border border-yellow-800 rounded px-4 py-3 text-black transition focus:outline-none focus:border-amber-500 focus:bg-amber-400"
+                placeholder="Confirmar senha"
+                value={formData.confirmPassword}
+                onChange={handleChange}
+                required
+              />
+            </div>
+
+            <div className="flex justify-center">
+              <button
+                type="submit"
+                disabled={loading}
+                className="w-1/2 bg-gradient-to-br from-yellow-200 to-amber-400 font-semibold text-stone-900 px-4 py-2 rounded shadow-md border border-yellow-800 transition-all duration-300 cursor-pointer hover:shadow-lg hover:brightness-190 active:brightness-95 disabled:opacity-50 disabled:cursor-not-allowed"
+              >
+                {loading ? "Criando..." : "Criar Conta"}
+              </button>
+            </div>
+          </form>
+
+          <div className="text-center mt-6">
+            <p className="text-stone-200 text-sm">
+              Já tem conta?{" "}
+              <Link
+                to="/login"
+                className="text-yellow-400 font-medium hover:text-yellow-600 hover:underline transition-colors duration-200"
+              >
+                Faça login
+              </Link>
+            </p>
+          </div>
+        </div>
+      </div>
+    </div>
+  );
+};
