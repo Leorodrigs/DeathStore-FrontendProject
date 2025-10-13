@@ -1,5 +1,6 @@
 const API_BASE_URL =
-  "deathstore-backendproject.railway.internal" || "http://localhost:3000";
+  "https://deathstore-backendproject-production.up.railway.app" ||
+  "http://localhost:3000";
 
 class ApiService {
   async request(endpoint, options = {}) {
